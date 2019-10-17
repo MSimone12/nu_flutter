@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/widgets.dart';
 
 mixin HomeAnimation<T extends StatefulWidget>
@@ -6,6 +8,7 @@ mixin HomeAnimation<T extends StatefulWidget>
   Animation<double> configOpacityAnimation;
   Animation<double> listOpacityAnimation;
   Animation<double> cardAnimation;
+  Animation<double> arrowAnimation;
 
   @override
   void didChangeDependencies() {
@@ -29,9 +32,15 @@ mixin HomeAnimation<T extends StatefulWidget>
     cardAnimation = Tween<double>(
       begin: 0,
       end: MediaQuery.of(context).size.height * 0.7,
-    ).animate(
-      controller
-    );
+    ).animate(CurvedAnimation(
+        parent: controller,
+        curve: Curves.easeIn,
+        reverseCurve: Curves.easeOut));
+
+    arrowAnimation = Tween<double>(begin: 0, end: pi).animate(CurvedAnimation(
+        parent: controller,
+        curve: Curves.easeIn,
+        reverseCurve: Curves.easeOut));
   }
 
   void toggleAnimation() {

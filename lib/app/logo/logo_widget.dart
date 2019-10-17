@@ -1,36 +1,67 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:nu_flutter/app/pages/home/home_animation.dart';
 
-class LogoWidget extends StatelessWidget {
+class LogoWidget extends StatefulWidget {
+  final AnimationController controller;
+  final Animation animation;
+  LogoWidget({@required this.animation, @required this.controller});
+
+  @override
+  _LogoWidgetState createState() => _LogoWidgetState();
+}
+
+class _LogoWidgetState extends State<LogoWidget> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SvgPicture.asset(
-              "assets/logo.svg",
-              color: Colors.white,
-            ),
-            SizedBox(width: 10),
-            Text(
-              "Matheus",
-              style: TextStyle(
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          if (widget.controller.value > 0) {
+            widget.controller.reverse();
+          } else {
+            widget.controller.forward();
+          }
+        });
+      },
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SvgPicture.asset(
+                "assets/logo.svg",
                 color: Colors.white,
-                fontSize: 23,
-                fontWeight: FontWeight.bold
               ),
+              SizedBox(width: 10),
+              Text(
+                "Matheus",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 23,
+                    fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+          AnimatedBuilder(
+            animation: widget.animation,
+            builder: (context, child) {
+              return Transform.rotate(
+                angle: widget.animation.value,
+                child: child,
+              );
+            },
+            child: Icon(
+              Icons.keyboard_arrow_down,
+              color: Colors.white,
+              size: 20,
             ),
-          ],
-        ),
-        Icon(
-          Icons.keyboard_arrow_down,
-          color: Colors.white.withOpacity(0.54),
-          size: 20,
-        ),
-      ],
+          ),
+        ],
+      ),
     );
   }
 }
