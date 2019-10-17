@@ -16,7 +16,7 @@ class _DefaultCardState extends State<DefaultCard>
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.9,
+      width: MediaQuery.of(context).size.width * 0.98,
       height: MediaQuery.of(context).size.height * 0.5,
       child: Card(elevation: 5, color: Colors.white, child: widget.child),
     );

@@ -35,8 +35,8 @@ class _NuCardState extends State<NuCard> with TickerProviderStateMixin {
           else
             widget.controller.reverse();
         },
-        child: Transform.translate(
-          offset: Offset(0, widget.animation.value),
+        child: Align(
+          alignment: Alignment.topCenter,
           child: DefaultCard(
             child: Column(
               mainAxisSize: MainAxisSize.max,

@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nu_flutter/app/pages/home/home_animation.dart';
 
 class LogoWidget extends StatefulWidget {
   final AnimationController controller;
@@ -49,8 +48,9 @@ class _LogoWidgetState extends State<LogoWidget> with TickerProviderStateMixin {
           AnimatedBuilder(
             animation: widget.animation,
             builder: (context, child) {
-              return Transform.rotate(
-                angle: widget.animation.value,
+              return Transform(
+                origin: Offset(0, pi * 3),
+                transform: Matrix4.rotationX(widget.animation.value),
                 child: child,
               );
             },

@@ -8,12 +8,11 @@ class AppWidget extends StatelessWidget {
       title: 'NuBank',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.purple,
-        canvasColor: Color(0xFF84269C),
-        cardColor: Colors.white,
-        dividerColor: Color(0xFFF6F7F6),
-        fontFamily: 'Arial, sans-serif'
-      ),
+          primaryColor: Colors.purple,
+          canvasColor: Color(0xFF84269C),
+          cardColor: Colors.white,
+          dividerColor: Color(0xFFF6F7F6),
+          fontFamily: 'Arial, sans-serif'),
       home: HomeModule(),
     );
   }

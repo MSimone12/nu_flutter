@@ -16,7 +16,7 @@ mixin HomeAnimation<T extends StatefulWidget>
 
     controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 300),
+      duration: Duration(milliseconds: 100),
     );
 
     configOpacityAnimation = Tween<double>(
@@ -31,7 +31,7 @@ mixin HomeAnimation<T extends StatefulWidget>
 
     cardAnimation = Tween<double>(
       begin: 0,
-      end: MediaQuery.of(context).size.height * 0.7,
+      end: MediaQuery.of(context).size.height * 0.6,
     ).animate(CurvedAnimation(
         parent: controller,
         curve: Curves.easeIn,

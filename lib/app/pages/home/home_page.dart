@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:nu_flutter/app/bottom_list/bottom_list_widget.dart';
+import 'package:nu_flutter/app/config/config_widget.dart';
 import 'package:nu_flutter/app/logo/logo_widget.dart';
 import 'home_animation.dart';
 import 'package:nu_flutter/app/card/card_widget.dart';
@@ -15,7 +17,7 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: Theme.of(context).primaryColor,
+          backgroundColor: Theme.of(context).canvasColor,
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -30,10 +32,16 @@ class _HomePageState extends State<HomePage>
               Expanded(
                 child: Stack(
                   children: <Widget>[
+                    Config(
+                      animation: configOpacityAnimation,
+                    ),
+                    BottomList(
+                      animation: listOpacityAnimation,
+                    ),
                     NuCard(
                       controller: controller,
                       animation: cardAnimation,
-                    )
+                    ),
                   ],
                 ),
               )
